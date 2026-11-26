@@ -10,7 +10,7 @@
     <div class="parent">
         <div class="screenbox" id="screenbox"></div>
         <div class="keyboard">
-        <table style="border-collapse: collapse;">
+        <table class="cell-container">
             <tr class="container">
                 <td class="cell" onclick="regClick('c')">C</td>
                 <td class="cell" onclick="regClick('d')">DEL</td>
@@ -47,18 +47,7 @@
 <script>
     let value = "";
     const regClick = (k)=>{
-        if(k === "✕"){
-            k = "*"
-            console.log(value, k)
-            value += k
-            document.getElementById("screenbox").innerHTML = value
-        }
-        else if(k === "÷"){
-            k = "/"
-            value += k
-            document.getElementById("screenbox").innerHTML = value
-        }
-        else if(k === "c"){
+        if(k === "c"){
             value = ""
             document.getElementById("screenbox").innerHTML = value
         }
@@ -67,14 +56,17 @@
             value = value.slice(0, -1)
             document.getElementById("screenbox").innerHTML = value
         }
+        else if(k === "cal" && value === ""){
+            return
+        }
         else if(k === "cal" && value != ""){
-            let sol = eval(value)
+            let newValue = value.replace(/✕/g, "*").replace(/÷/g, "/")
+            let sol = eval(newValue)
             value = sol
             document.getElementById("screenbox").innerHTML = value
         }else{
             value += k
             document.getElementById("screenbox").innerHTML = value
-
         }
     }
 </script>
