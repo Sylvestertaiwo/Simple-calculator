@@ -1,0 +1,22 @@
+body, html{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    min-height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    display: table-row;
+    flex-direction: row;
+}
+.cell{
+    height: 50px;
+    width: 50px;
+    border: 1px solid rgb(94, 93, 93);  
+    text-align: center;
+}
+
