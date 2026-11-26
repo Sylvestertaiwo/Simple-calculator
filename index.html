@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="parent">
-        <div class="screenbox" id="screenbox"></div>
+        <div class="screenbox"> <div class="screen" id="screenbox"></div></div>
         <div class="keyboard">
         <table class="cell-container">
             <tr class="container">
@@ -36,8 +36,8 @@
                 <td class="cell calc" rowspan="2" onclick="regClick('cal')">=</td>
             </tr>
             <tr class="container">
-                <td class="cell" onclick="regClick('00')">00</td>
                 <td class="cell" onclick="regClick('0')">0</td>
+                <td class="cell" onclick="regClick('√')">√</td>
                 <td class="cell" onclick="regClick('.')">.</td>
             </tr>
         </table>
@@ -60,10 +60,18 @@
             return
         }
         else if(k === "cal" && value != ""){
-            let newValue = value.replace(/✕/g, "*").replace(/÷/g, "/")
+            try{
+            let newValue = value.replace(/✕/g, "*").replace(/÷/g, "/").replace(/√(\d+\.?\d*)/g, "Math.sqrt($1)")
             let sol = eval(newValue)
             value = sol
-            document.getElementById("screenbox").innerHTML = value
+            if(value === "Infinity" || value === "Syntax Error" || value === "Math Error"){
+                document.getElementById("screenbox").innerHTML = "Syntax Error"
+            }else{
+                document.getElementById("screenbox").innerHTML = value
+            }
+            }catch{
+                document.getElementById("screenbox").innerHTML = "Syntax Error" 
+            }
         }else{
             value += k
             document.getElementById("screenbox").innerHTML = value

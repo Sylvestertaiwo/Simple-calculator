@@ -38,13 +38,18 @@ body{
 }
 .screenbox{
     display: flex;
+    padding: 10px 15px;
+    height: 4rem;
+    border-top: 40px solid silver;
+    border-radius: 15px 15px 0px 0px;
+}
+.screen{
+    font-size: 19px;
+    overflow: hidden;
+    contain: inline-size;
+    width: 100%;
+    display: flex;
     justify-content: end;
     align-items: flex-end;
-    padding: 10px 20px;
-    height: 4rem;
-    border-top: 30px solid silver;
-    border-radius: 18px 18px 0px 0px;
-    font-size: 18px;
-    overflow: hidden;
-    width: 30rem;
+    color: rgb(48, 47, 47);
 }
